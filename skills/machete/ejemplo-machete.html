@@ -1,0 +1,361 @@
+<title>Machete Unidad I</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+<style>
+/* Same visual language as the unit videos: warm paper ground, white cards, blue/orange compare tops, yellow highlighter, segmented progress bar. Deliberately light-only, like the videos. */
+:root {
+  --bg: #F4F2ED;
+  --card: #FFFFFF;
+  --ink: #1A1D23;
+  --muted: #5B6170;
+  --line: #D9D5CC;
+  --accent: #2340C4;
+  --accent-soft: #E3E8FB;
+  --warm: #B4441A;
+  --warm-soft: #FBE6DC;
+  --ok: #17795E;
+  --ok-soft: #DDF2EA;
+  --mark: rgba(255, 205, 0, 0.55);
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.wrap { max-width: 900px; margin: 0 auto; padding-block: 22px 90px; display: flex; flex-direction: column; gap: 44px; }
+
+.topline { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--muted); }
+.topline b { color: var(--ink); }
+.kicker { font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 0.14em; text-transform: uppercase; }
+header { display: flex; flex-direction: column; gap: 14px; }
+header h1 { font-size: clamp(38px, 8vw, 64px); font-weight: 800; line-height: 1.02; margin: 4px 0 0; letter-spacing: -0.02em; text-wrap: balance; }
+header p { margin: 0; color: var(--muted); font-size: 19px; max-width: 60ch; }
+
+nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 12px; margin-block: -30px; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+nav a { flex: none; font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 8px 14px; border: 2px solid var(--line); border-radius: 12px; background: var(--card); }
+nav a:hover, nav a:focus-visible, nav a.on { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); outline: none; }
+
+section { display: flex; flex-direction: column; gap: 18px; scroll-margin-top: 80px; min-width: 0; }
+h2 { font-size: clamp(28px, 5vw, 38px); font-weight: 700; line-height: 1.15; margin: 0; text-wrap: balance; }
+h3 { font-size: 19px; font-weight: 700; margin: 0; }
+p { margin: 0; }
+ul, ol { margin: 0; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+li { display: flex; gap: 14px; align-items: baseline; }
+li::before { content: "•"; color: var(--accent); font-weight: 700; flex: none; width: 14px; }
+ol { counter-reset: n; }
+ol > li::before { counter-increment: n; content: counter(n) "."; width: 22px; }
+mark { background: linear-gradient(var(--mark), var(--mark)); color: inherit; font-weight: 600; padding: 0 2px; border-radius: 4px; }
+
+.def { font-size: 21px; line-height: 1.6; }
+.box { border-left: 8px solid var(--accent); background: var(--accent-soft); border-radius: 14px; padding: 18px 22px; display: flex; flex-direction: column; gap: 10px; }
+.box.warm { border-color: var(--warm); background: var(--warm-soft); }
+.box.ok { border-color: var(--ok); background: var(--ok-soft); }
+.box.plain { border-color: var(--muted); background: var(--card); }
+.label { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.warm .label { color: var(--warm); }
+.ok .label { color: var(--ok); }
+.plain .label { color: var(--muted); }
+
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.col { background: var(--card); border-radius: 18px; border-top: 10px solid var(--accent); padding: 20px 22px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.col + .col { border-top-color: var(--warm); }
+.col h3 { font-size: 22px; color: var(--accent); }
+.col + .col h3 { color: var(--warm); }
+
+.table { overflow-x: auto; background: var(--card); border-radius: 18px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+table { width: 100%; border-collapse: collapse; font-size: 16px; min-width: 520px; }
+th, td { text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: none; }
+th { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+td:first-child { font-weight: 700; }
+
+.tree { display: flex; flex-direction: column; align-items: center; }
+.tree .root { background: var(--ink); color: #FFFFFF; font-weight: 700; font-size: 20px; padding: 12px 24px; border-radius: 14px; text-align: center; }
+.tree .stem { width: 4px; height: 22px; background: var(--line); }
+.tree .nodes { width: 100%; border-top: 4px solid var(--line); padding-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.node { background: var(--card); border: 3px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; flex-direction: column; gap: 6px; }
+.node p { color: var(--muted); font-size: 15px; line-height: 1.4; }
+
+.flow { display: flex; flex-direction: column; gap: 8px; }
+.step { display: grid; grid-template-columns: 130px 1fr; gap: 14px; align-items: center; }
+.stage { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm); text-align: right; }
+.step .card { background: var(--card); border: 3px solid var(--line); border-radius: 14px; padding: 8px 16px; }
+.step .card b { display: block; }
+.step .card span { color: var(--muted); font-size: 15px; }
+.step.end .card { background: var(--accent-soft); border-color: var(--accent); }
+
+details { background: var(--card); border: 3px solid var(--line); border-radius: 14px; padding: 14px 18px; }
+details[open] { border-color: var(--ok); }
+summary { cursor: pointer; font-weight: 700; font-size: 18px; list-style: none; display: flex; flex-direction: column; gap: 4px; }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: "Pensalo"; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+details[open] summary::before { content: "Respuesta"; color: var(--ok); }
+summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; border-radius: 6px; }
+details .ans { margin-top: 10px; background: var(--ok-soft); border-left: 6px solid var(--ok); border-radius: 10px; padding: 10px 14px; }
+.small { font-size: 15px; color: var(--muted); }
+
+.progress { position: fixed; left: 0; right: 0; bottom: 0; z-index: 6; display: flex; gap: 6px; background: var(--bg);
+  padding: 10px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.progress span { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+.progress i { display: block; height: 100%; width: 0; background: var(--accent); }
+
+@media (max-width: 520px) {
+  .step { grid-template-columns: 1fr; gap: 4px; }
+  .stage { text-align: left; }
+  .stage:empty { display: none; }
+  .def { font-size: 19px; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="topline"><span><b>Unidad I</b> · Fundamentos del derecho</span><span>Machete</span></div>
+    <div class="kicker">Legislación para Ingenieros</div>
+    <h1>Fundamentos del derecho</h1>
+    <p>Lo mínimo que tenés que dominar. Lo <mark>resaltado</mark> es lo que más se pregunta o se confunde.</p>
+  </header>
+
+  <nav aria-label="Temas">
+    <a href="#ya">5 min</a><a href="#derecho">Derecho</a><a href="#ley">Ley</a><a href="#estado">Estado</a><a href="#orden">Orden</a><a href="#fuentes">Fuentes</a><a href="#ramas">Ramas</a><a href="#sancion">Sanción</a><a href="#trampas">Trampas</a><a href="#test">Autotest</a>
+  </nav>
+
+  <section id="ya">
+    <div class="box">
+      <div class="label">Si tenés 5 minutos</div>
+      <ol>
+        <li><span>Derecho = 4 causas: <b>material</b> conducta · <b>formal</b> justicia · <b>eficiente</b> ley · <b>final</b> bien común.</span></li>
+        <li><span>Ley <b>amplia</b> = toda norma. Ley <b>estricta</b> = sancionada por el Congreso y promulgada por el Ejecutivo.</span></li>
+        <li><span>Estado = población + territorio + poder + gobierno. <b>Estado de derecho</b> = ordenamiento + justo + vigente + sanciona.</span></li>
+        <li><span><b>Orden jurídico</b> = todas las normas vigentes. <b>Orden público</b> = núcleo que no se altera ni por acuerdo privado ni por ley extranjera.</span></li>
+        <li><span>Fuente <b>formal</b> = cómo se manifiesta la norma. Fuente <b>material</b> = por qué existe.</span></li>
+        <li><span>Internacional <b>público</b> = entre Estados. Internacional <b>privado</b> = entre personas de distinta nacionalidad.</span></li>
+        <li><span><b>Sanción</b> (Congreso) → <b>promulgación</b> (Ejecutivo) → <b>publicación</b> en el Boletín Oficial: recién ahí obliga.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="derecho">
+    <div class="label">Concepto</div>
+    <h2>El derecho</h2>
+    <p class="def">Fenómeno complejo que reconoce como su <mark>causa material a la conducta humana en interferencia intersubjetiva</mark>, como su <mark>causa formal a la justicia</mark>, como su <mark>causa eficiente a la ley</mark> y como su <mark>causa final al bien común</mark>.</p>
+    <div class="table">
+      <table>
+        <thead><tr><th>Causa</th><th>Pregunta</th><th>Derecho</th><th>Puente</th></tr></thead>
+        <tbody>
+          <tr><td>Material</td><td>¿De qué está hecho?</td><td>Conducta humana</td><td>Acero y hormigón</td></tr>
+          <tr><td>Formal</td><td>¿Qué le da su forma?</td><td>La justicia, «virtud de las virtudes»</td><td>El diseño</td></tr>
+          <tr><td>Eficiente</td><td>¿Qué lo produce?</td><td>La ley, en sentido amplio</td><td>La constructora</td></tr>
+          <tr><td>Final</td><td>¿Para qué existe?</td><td>El bien común (sindéresis: «el bien ha de hacerse y el mal ha de evitarse»)</td><td>Cruzar el río</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box plain">
+      <div class="label">Interferencia intersubjetiva</div>
+      <p>Mi conducta afecta a otro. Solo en una isla no hay nada que regular; aparece otra persona y entra el derecho. Por eso: <b>acto humano justiciable</b>, una conducta que puede ser juzgada.</p>
+    </div>
+    <p class="small">Caras del derecho: conducta (Cossio), sanción, expresión de voluntades (mayoría sin desproteger minorías), proyecto de orden, poder (legítimo o no).</p>
+  </section>
+
+  <section id="ley">
+    <h2>Dos sentidos de «ley»</h2>
+    <div class="cols">
+      <div class="col"><h3>Sentido amplio</h3><ul><li><span>Toda norma jurídica</span></li><li><span>Incluye decretos, resoluciones, disposiciones</span></li></ul></div>
+      <div class="col"><h3>Sentido estricto</h3><ul><li><span><mark>Sancionada por el Congreso</mark></span></li><li><span><mark>Promulgada por el Poder Ejecutivo</mark></span></li></ul></div>
+    </div>
+    <div class="box ok"><div class="label">La diferencia</div><p>Quién la dicta y por qué procedimiento. Una resolución de un ministerio es ley en sentido amplio, no en sentido estricto.</p></div>
+  </section>
+
+  <section id="estado">
+    <div class="label">Concepto</div>
+    <h2>El Estado</h2>
+    <p class="def">«<mark>Grupo de individuos</mark> establecidos sobre un <mark>territorio determinado</mark> y sujetos a la <mark>autoridad de un mismo gobierno</mark>».</p>
+    <div class="table">
+      <table>
+        <thead><tr><th>Elemento</th><th>Qué es</th></tr></thead>
+        <tbody>
+          <tr><td>Población</td><td>Elemento humano: habitantes <mark>argentinos o extranjeros</mark>. No es lo mismo que ciudadanos.</td></tr>
+          <tr><td>Territorio</td><td>Espacio terrestre, marítimo y aéreo, con suelo y subsuelo, donde se ejerce la soberanía.</td></tr>
+          <tr><td>Poder</td><td>Capacidad o energía para lograr su fin. Hay detentadores y destinatarios.</td></tr>
+          <tr><td>Gobierno</td><td>Órganos a través de los cuales se ejerce el poder.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cols">
+      <div class="col"><h3>Poder</h3><ul><li><span>Una capacidad</span></li><li><span>Ej.: la facultad de cobrar impuestos</span></li></ul></div>
+      <div class="col"><h3>Gobierno</h3><ul><li><span>Los órganos que la ejercen</span></li><li><span>Ej.: el Congreso y el organismo recaudador</span></li></ul></div>
+    </div>
+    <h3>Estado de derecho: cuatro requisitos, todos juntos</h3>
+    <ol>
+      <li><span>Ordenamiento jurídico (Constitución, leyes)</span></li>
+      <li><span>Que ese ordenamiento sea <b>JUSTO</b></span></li>
+      <li><span>Que tenga <b>VIGENCIA</b></span></li>
+      <li><span>Que se <b>SANCIONE</b> a quienes lo transgredan</span></li>
+    </ol>
+    <div class="box warm"><div class="label">Caso</div><p>Constitución impecable, pero los funcionarios que cometen delitos nunca son juzgados → falla el requisito 4. <b>Es un Estado, pero no un Estado de derecho.</b></p></div>
+  </section>
+
+  <section id="orden">
+    <h2>Orden jurídico vs. orden público</h2>
+    <div class="cols">
+      <div class="col"><h3>Orden jurídico</h3><p>Conjunto de <mark>normas jurídicas vigentes</mark> en un lugar y tiempo determinados. Es el <b>derecho positivo</b>: rige aquí y ahora, dotado de <i>imperium</i>.</p></div>
+      <div class="col"><h3>Orden público</h3><p>Condiciones fundamentales de la vida social que <mark>no pueden alterarse por la voluntad de los individuos ni por normas extranjeras</mark>.</p></div>
+    </div>
+    <div class="box ok"><div class="label">La diferencia</div><p>¿Todas las normas, o lo que nadie puede modificar por acuerdo? Ej.: dos empresas pactan no cumplir normas de seguridad estructural → la cláusula no vale, choca contra el orden público.</p></div>
+    <div class="tree">
+      <div class="root">Teorías sobre el orden público</div>
+      <div class="stem"></div>
+      <div class="nodes">
+        <div class="node"><h3>Según un tipo de norma</h3><p>Demolombe: derecho público</p><p>Borda: leyes imperativas</p></div>
+        <div class="node"><h3>Según una finalidad</h3><p>Planiol: interés general</p><p>Capitant, Laurent, Aubry y Rau: principios eminentes</p></div>
+        <div class="node"><h3>Según una persona</h3><p>Mourlon: intuición del intérprete</p><p>Vareilles-Sommières: voluntad del legislador</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fuentes">
+    <div class="label">Fuente = principio, fundamento u origen</div>
+    <h2>Fuentes del derecho</h2>
+    <ul>
+      <li><span><b>Normas jurídicas</b></span></li>
+      <li><span><b>Doctrina:</b> lo que escriben los juristas</span></li>
+      <li><span><b>Usos y costumbres:</b> prácticas sociales repetidas</span></li>
+      <li><span><b>Jurisprudencia:</b> lo que resuelven los tribunales</span></li>
+      <li><span><b>Equidad:</b> la justicia del caso concreto</span></li>
+      <li><span><b>Principios generales del derecho:</b> ideas básicas del sistema</span></li>
+    </ul>
+    <div class="cols">
+      <div class="col"><h3>Formal</h3><ul><li><span>Cómo se <mark>exterioriza</mark> un precepto obligatorio</span></li><li><span>Ej.: la ley</span></li><li><span>≈ fuente <b>directa</b></span></li></ul></div>
+      <div class="col"><h3>Material</h3><ul><li><span>La <mark>idea, causa u origen</mark> de la fuente formal</span></li><li><span>≈ fuente <b>indirecta</b></span></li></ul></div>
+    </div>
+    <div class="flow">
+      <div class="step"><div class="stage">Fuente material</div><div class="card"><b>Realidad</b><span>accidentes con monopatines</span></div></div>
+      <div class="step"><div class="stage">Fuente formal</div><div class="card"><b>Norma</b><span>casco obligatorio</span></div></div>
+      <div class="step end"><div class="stage">La norma vuelve</div><div class="card"><b>Realidad nueva</b><span>la gente usa casco</span></div></div>
+    </div>
+    <div class="box warm"><div class="label">Ojo</div><p>Según la opinión «casi unánime» que cita el apunte, las fuentes formales son solo dos: <b>la ley y los contratos</b>. Jurisprudencia, equidad, usos y costumbres, principios generales y doctrina son <b>instrumentos interpretativos</b>.</p></div>
+    <p class="small">Tres clasificaciones: primigenias (costumbres y conductas; principios y virtudes) / otras (normas, jurisprudencia, doctrina) · formal / material · directas / indirectas. Complemento: legalidad = ajustarse a la ley vigente; legitimidad = que además sea justo y aceptado.</p>
+  </section>
+
+  <section id="ramas">
+    <h2>Ramas del derecho</h2>
+    <div class="cols">
+      <div class="col">
+        <h3>Público</h3>
+        <ul>
+          <li><span><b>Constitucional:</b> órganos constitucionales, derechos y libertades</span></li>
+          <li><span><b>Administrativo:</b> el Estado y su relación con particulares</span></li>
+          <li><span><b>Penal:</b> actividad punitiva</span></li>
+          <li><span><b>Procesal:</b> cómo se juzga y se ejecuta</span></li>
+          <li><span><b>Financiero y tributario:</b> recursos del Estado</span></li>
+          <li><span><b>Internacional público:</b> entre Estados</span></li>
+        </ul>
+      </div>
+      <div class="col">
+        <h3>Privado</h3>
+        <ul>
+          <li><span><b>Civil:</b> persona, familia, patrimonio, contratos, responsabilidad extracontractual</span></li>
+          <li><span><b>Comercial:</b> el comercio</span></li>
+          <li><span><b>Laboral o social:</b> trabajador y empleador. <mark>Seguridad social → público</mark></span></li>
+          <li><span><b>Internacional privado:</b> personas de distinta nacionalidad</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="box ok"><div class="label">La diferencia</div><p>¿Quiénes son las partes? Tratado de límites Argentina–Chile → <b>público</b>. Empresa argentina que compra a un proveedor alemán → <b>privado</b>.</p></div>
+  </section>
+
+  <section id="sancion">
+    <h2>Cómo nace una ley</h2>
+    <div class="flow">
+      <div class="step"><div class="stage">Iniciativa</div><div class="card"><b>Presentación del proyecto</b><span>legisladores, Poder Ejecutivo o ciudadanos</span></div></div>
+      <div class="step"><div class="stage">Constitutiva</div><div class="card"><b>Cámara de origen</b><span>donde entra el proyecto</span></div></div>
+      <div class="step"><div class="stage"></div><div class="card"><b>Cámara revisora</b><span>lo revisa</span></div></div>
+      <div class="step"><div class="stage"></div><div class="card"><b>Sanción</b><span>aprobado por ambas Cámaras</span></div></div>
+      <div class="step"><div class="stage">Eficacia</div><div class="card"><b>Promulgación</b><span>el Poder Ejecutivo la aprueba por decreto</span></div></div>
+      <div class="step end"><div class="stage"></div><div class="card"><b>Publicación</b><span>Boletín Oficial → <mark>obligatoria</mark></span></div></div>
+    </div>
+    <div class="table">
+      <table>
+        <thead><tr><th>Sancionar</th><th>Promulgar</th><th>Publicar</th></tr></thead>
+        <tbody><tr><td>Congreso: aprueban ambas Cámaras</td><td style="font-weight:400">Poder Ejecutivo: aprueba la ley sancionada</td><td style="font-weight:400">Boletín Oficial: desde ahí es obligatoria</td></tr></tbody>
+      </table>
+    </div>
+    <ul>
+      <li><span><b>Rechazo total</b> por una de las Cámaras</span></li>
+      <li><span><b>Rechazo parcial</b> por la Cámara revisora</span></li>
+      <li><span><b>Promulgación expresa o tácita</b> <span class="small">(tácita: no lo devuelve en 10 días hábiles, Constitución Nacional art. 80; complemento)</span></span></li>
+      <li><span><b>Veto total o parcial:</b> el Ejecutivo rechaza lo sancionado</span></li>
+      <li><span><b>Clases de leyes del Congreso:</b> derecho común · federales · locales</span></li>
+    </ul>
+  </section>
+
+  <section id="trampas">
+    <h2>Lo que más se confunde</h2>
+    <div class="table">
+      <table>
+        <thead><tr><th>Par</th><th>En una línea</th></tr></thead>
+        <tbody>
+          <tr><td>Estado / Estado de derecho</td><td>El segundo agrega orden justo + vigente + sanción.</td></tr>
+          <tr><td>Poder / gobierno</td><td>Capacidad vs. órganos que la ejercen.</td></tr>
+          <tr><td>Ley amplia / estricta</td><td>Toda norma vs. solo la del Congreso promulgada por el Ejecutivo.</td></tr>
+          <tr><td>Orden jurídico / público</td><td>Todas las normas vigentes vs. núcleo inalterable por acuerdo o ley extranjera.</td></tr>
+          <tr><td>Fuente formal / material</td><td>Cómo se manifiesta vs. por qué existe.</td></tr>
+          <tr><td>Internacional público / privado</td><td>Entre Estados vs. entre particulares de distinta nacionalidad.</td></tr>
+          <tr><td>Sanción / promulgación / publicación</td><td>Congreso aprueba / Ejecutivo aprueba / recién obliga.</td></tr>
+          <tr><td>Causa formal / eficiente</td><td>Justicia (la forma) vs. ley (lo que lo produce).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="test">
+    <h2>Autotest</h2>
+    <p class="small">Respondé antes de abrir.</p>
+    <details><summary>¿Cuál es la causa eficiente del derecho?</summary><p class="ans">La ley, en sentido amplio. Eficiente = lo que produce algo. La justicia es la formal, el bien común la final y la conducta la material.</p></details>
+    <details><summary>Un ministerio dicta una resolución sobre ascensores. ¿Es ley?</summary><p class="ans">En sentido amplio sí; en sentido estricto no, porque no la sancionó el Congreso.</p></details>
+    <details><summary>Un extranjero que vive en Córdoba, ¿es parte de la población?</summary><p class="ans">Sí. La población son los habitantes, argentinos o extranjeros.</p></details>
+    <details><summary>País con leyes justas donde nadie es sancionado. ¿Estado de derecho?</summary><p class="ans">No. Falla el cuarto requisito (sanción). Sí es un Estado.</p></details>
+    <details><summary>¿Una ley extranjera elegida en un contrato puede dejar sin efecto el orden público argentino?</summary><p class="ans">No. El orden público no se altera ni por voluntad de los individuos ni por normas extranjeras.</p></details>
+    <details><summary>Vecinos reclaman por ruidos de obra y el municipio dicta una ordenanza de horarios. ¿Fuente formal y material?</summary><p class="ans">Formal: la ordenanza. Material: los reclamos y la necesidad de proteger el descanso.</p></details>
+    <details><summary>Una constructora gana una licitación del Estado. ¿Qué rama la regula?</summary><p class="ans">Derecho administrativo: relación del Estado con particulares. No es civil porque una parte es el Estado actuando como tal.</p></details>
+    <details><summary>Ley sancionada y promulgada pero no publicada. ¿Obliga?</summary><p class="ans">No. Obliga recién con la publicación en el Boletín Oficial.</p></details>
+    <details><summary>¿En qué rama está el derecho laboral y cuál es la excepción?</summary><p class="ans">Privado. Los reclamos de seguridad social forman parte del derecho público.</p></details>
+  </section>
+</div>
+
+<div class="progress" aria-hidden="true"></div>
+
+<script>
+// Segmented progress bar like the videos: one segment per section, filled as you scroll through it.
+(() => {
+  const sections = [...document.querySelectorAll("section")];
+  const bar = document.querySelector(".progress");
+  const fills = sections.map(() => {
+    const s = document.createElement("span");
+    const i = document.createElement("i");
+    s.appendChild(i);
+    bar.appendChild(s);
+    return i;
+  });
+  const links = [...document.querySelectorAll("nav a")];
+  const update = () => {
+    const mid = window.scrollY + window.innerHeight * 0.4;
+    let current = sections[0].id;
+    sections.forEach((sec, k) => {
+      const top = sec.offsetTop, h = sec.offsetHeight || 1;
+      const p = Math.min(1, Math.max(0, (mid - top) / h));
+      fills[k].style.width = p * 100 + "%";
+      if (mid >= top) current = sec.id;
+    });
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) fills.forEach((f) => (f.style.width = "100%"));
+    links.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + current));
+  };
+  window.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+})();
+</script>
