@@ -1,0 +1,276 @@
+<title>Flashcards Unidad I</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+<style>
+/* Same visual language as the study videos and machete: paper ground, white card, blue question, green answer, warm "no la sabía". Light-only on purpose. */
+:root {
+  --bg: #F4F2ED;
+  --card: #FFFFFF;
+  --ink: #1A1D23;
+  --muted: #5B6170;
+  --line: #D9D5CC;
+  --accent: #2340C4;
+  --accent-soft: #E3E8FB;
+  --warm: #B4441A;
+  --warm-soft: #FBE6DC;
+  --ok: #17795E;
+  --ok-soft: #DDF2EA;
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 17px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.app { max-width: 760px; margin: 0 auto; min-height: 100%; padding-block: 18px 24px; display: flex; flex-direction: column; gap: 16px; }
+.topline { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; color: var(--muted); }
+.topline b { color: var(--ink); }
+h1 { font-size: clamp(30px, 6vw, 44px); font-weight: 800; line-height: 1.05; margin: 0; letter-spacing: -0.02em; text-wrap: balance; }
+
+.stats { display: flex; gap: 8px; flex-wrap: wrap; font-size: 14px; }
+.stat { background: var(--card); border: 2px solid var(--line); border-radius: 10px; padding: 4px 10px; font-variant-numeric: tabular-nums; }
+.stat b { font-weight: 700; }
+.stat.new b { color: var(--accent); }
+.stat.learn b { color: var(--warm); }
+.stat.done b { color: var(--ok); }
+
+.chips { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.chip { flex: none; font: 600 14px var(--font); color: var(--ink); padding: 8px 14px; border: 2px solid var(--line); border-radius: 12px; background: var(--card); cursor: pointer; }
+.chip[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.chip:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+.progress { display: flex; gap: 2px; }
+.progress span { flex: 1; height: 8px; border-radius: 4px; background: var(--line); }
+.progress span.ok { background: var(--ok); }
+.progress span.no { background: var(--warm); }
+.progress span.now { background: var(--accent); }
+
+.card { background: var(--card); border-radius: 20px; box-shadow: 0 2px 14px rgba(0,0,0,0.06); padding: clamp(20px, 4vw, 34px); display: flex; flex-direction: column; gap: 18px; flex: 1; min-height: 340px; }
+.meta { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; }
+.type { font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.section { color: var(--muted); text-align: right; }
+.q { font-size: clamp(24px, 4.6vw, 34px); font-weight: 700; line-height: 1.25; text-wrap: balance; }
+.answer { border-left: 8px solid var(--ok); background: var(--ok-soft); border-radius: 14px; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; }
+.answer .label { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ok); }
+.answer .a { font-size: clamp(19px, 3.4vw, 23px); line-height: 1.45; }
+.answer .why { font-size: 16px; color: var(--muted); }
+.answer .why b { color: var(--ink); }
+.think { margin-top: auto; font-size: 14px; color: var(--muted); }
+
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-bottom: env(safe-area-inset-bottom, 0px); }
+.actions button { font: 700 18px var(--font); border-radius: 14px; padding: 16px 12px; cursor: pointer; border: 3px solid transparent; min-height: 58px; }
+.reveal { grid-column: 1 / -1; background: var(--accent); color: #FFFFFF; }
+.no { background: var(--warm-soft); color: var(--warm); border-color: var(--warm) !important; }
+.yes { background: var(--ok-soft); color: var(--ok); border-color: var(--ok) !important; }
+.keys { font-size: 13px; color: var(--muted); text-align: center; }
+kbd { font: 600 12px var(--font); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 5px; padding: 1px 5px; background: var(--card); }
+
+.end { text-align: center; align-items: center; justify-content: center; }
+.end .big { font-size: 56px; font-weight: 800; color: var(--ok); font-variant-numeric: tabular-nums; }
+.end .row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.end button { font: 700 16px var(--font); border-radius: 12px; padding: 12px 18px; cursor: pointer; border: 3px solid var(--accent); background: var(--accent-soft); color: var(--accent); }
+.end button.primary { background: var(--accent); color: #FFFFFF; }
+.reset { align-self: center; font: 600 13px var(--font); color: var(--muted); background: none; border: none; text-decoration: underline; cursor: pointer; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .answer, .q { animation: rise 0.22s ease-out; }
+  @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+}
+</style>
+
+<!-- The deck: the only part that changes between decks. Fields: s = section, t = Definición | Diferencia | Caso | Lista | Dato, q = front, a = back, why = optional reason. -->
+<script type="application/json" id="deck">
+{
+  "id": "legislacion-u1",
+  "materia": "Legislación para Ingenieros",
+  "unidad": "Unidad I",
+  "titulo": "Fundamentos del derecho",
+  "cards": [
+    {"s": "El derecho", "t": "Definición", "q": "¿Cuál es el concepto de derecho que adopta la materia?", "a": "Fenómeno complejo con causa material: la conducta humana en interferencia intersubjetiva; formal: la justicia; eficiente: la ley; final: el bien común."},
+    {"s": "El derecho", "t": "Dato", "q": "¿Cuál es la causa material del derecho?", "a": "La conducta humana en interferencia intersubjetiva.", "why": "Responde «¿de qué está hecho?»."},
+    {"s": "El derecho", "t": "Dato", "q": "¿Cuál es la causa formal del derecho?", "a": "La justicia, «virtud de las virtudes».", "why": "Responde «¿qué le da su forma?»."},
+    {"s": "El derecho", "t": "Dato", "q": "¿Cuál es la causa eficiente del derecho?", "a": "La ley, en sentido amplio.", "why": "Responde «¿qué lo produce?». No es la justicia: esa es la formal."},
+    {"s": "El derecho", "t": "Dato", "q": "¿Cuál es la causa final del derecho y en qué principio se apoya?", "a": "El bien común, apoyado en la sindéresis: «el bien ha de hacerse y el mal ha de evitarse»."},
+    {"s": "El derecho", "t": "Definición", "q": "¿Qué significa «interferencia intersubjetiva»?", "a": "Que la conducta de una persona afecta a otra.", "why": "Alguien solo en una isla no genera nada que regular. Por eso se habla de «acto humano justiciable»."},
+    {"s": "El derecho", "t": "Caso", "q": "En la analogía del puente, ¿qué causa del derecho es «la constructora»?", "a": "La causa eficiente.", "why": "Es lo que produce el puente, como la ley produce el derecho."},
+
+    {"s": "La ley", "t": "Diferencia", "q": "Ley en sentido amplio vs. ley en sentido estricto", "a": "Amplio: toda norma jurídica (decretos, resoluciones, disposiciones). Estricto: la sancionada por el Congreso y promulgada por el Poder Ejecutivo.", "why": "Lo que cambia es quién la dicta y por qué procedimiento."},
+    {"s": "La ley", "t": "Caso", "q": "Un ministerio dicta una resolución con requisitos de seguridad para ascensores. ¿Es una ley?", "a": "En sentido amplio, sí. En sentido estricto, no.", "why": "No la sancionó el Congreso ni la promulgó el Ejecutivo."},
+
+    {"s": "El Estado", "t": "Definición", "q": "¿Qué es el Estado?", "a": "Un grupo de individuos establecidos sobre un territorio determinado y sujetos a la autoridad de un mismo gobierno."},
+    {"s": "El Estado", "t": "Lista", "q": "¿Cuáles son los 4 elementos del Estado?", "a": "Población, territorio, poder y gobierno."},
+    {"s": "El Estado", "t": "Diferencia", "q": "Poder vs. gobierno", "a": "Poder: la capacidad o energía del Estado para lograr su fin. Gobierno: los órganos a través de los cuales se ejerce.", "why": "Cobrar impuestos es poder; el Congreso y el organismo recaudador son gobierno."},
+    {"s": "El Estado", "t": "Caso", "q": "Un extranjero vive hace dos años en Córdoba. ¿Integra la población del Estado argentino?", "a": "Sí.", "why": "La población son los habitantes, argentinos o extranjeros. No es lo mismo que ciudadanos."},
+    {"s": "El Estado", "t": "Dato", "q": "¿Qué abarca el territorio?", "a": "El espacio terrestre, marítimo y aéreo, incluidos suelo y subsuelo, donde vive la población y se ejerce la soberanía."},
+    {"s": "El Estado", "t": "Lista", "q": "¿Cuáles son los 4 requisitos del Estado de derecho?", "a": "Un ordenamiento jurídico, que sea justo, que tenga vigencia y que se sancione a quienes lo transgreden."},
+    {"s": "El Estado", "t": "Caso", "q": "Un país tiene leyes justas, pero quienes las violan nunca son sancionados. ¿Es un Estado de derecho?", "a": "No. Es un Estado, pero no un Estado de derecho.", "why": "Falla el cuarto requisito: la sanción. Los cuatro son acumulativos."},
+
+    {"s": "Orden jurídico y público", "t": "Definición", "q": "¿Qué es el orden jurídico?", "a": "El conjunto de normas jurídicas vigentes en un lugar y tiempo determinados. Es el derecho positivo."},
+    {"s": "Orden jurídico y público", "t": "Definición", "q": "¿Qué es el orden público?", "a": "Las condiciones fundamentales de la vida social que, por afectar centralmente a la organización de la comunidad, no pueden alterarse por la voluntad de los individuos ni por normas extranjeras."},
+    {"s": "Orden jurídico y público", "t": "Diferencia", "q": "Orden jurídico vs. orden público", "a": "Jurídico: todas las normas vigentes. Público: el núcleo de condiciones fundamentales que nadie puede alterar por acuerdo.", "why": "Pregunta guía: ¿todas las normas, o lo que no se puede modificar por acuerdo?"},
+    {"s": "Orden jurídico y público", "t": "Caso", "q": "Dos empresas pactan que un edificio no cumpla las normas de seguridad estructural. ¿Vale esa cláusula?", "a": "No: choca contra el orden público.", "why": "La voluntad privada no puede alterar esas condiciones, aunque las dos partes estén de acuerdo."},
+    {"s": "Orden jurídico y público", "t": "Caso", "q": "¿Una ley extranjera elegida en un contrato puede dejar sin efecto el orden público argentino?", "a": "No.", "why": "El orden público no se altera ni por la voluntad de los individuos ni por normas extranjeras: son dos barreras."},
+    {"s": "Orden jurídico y público", "t": "Dato", "q": "¿Qué significa que el derecho positivo está «dotado de imperium»?", "a": "Que rige aquí y ahora con fuerza para imponerse: su incumplimiento generalmente acarrea una consecuencia jurídica."},
+    {"s": "Orden jurídico y público", "t": "Dato", "q": "¿Con qué identifica Borda al orden público? ¿Y Demolombe?", "a": "Borda: con las leyes imperativas. Demolombe: con el derecho público.", "why": "Las dos teorías lo atan a un tipo de norma."},
+    {"s": "Orden jurídico y público", "t": "Dato", "q": "¿Qué comprende el orden público para Planiol? ¿Y para Capitant, Laurent, Aubry y Rau?", "a": "Planiol: las normas que preservan el interés general. Los otros: los principios eminentes (religiosos, morales, políticos y económicos) de los que depende la digna subsistencia social.", "why": "Estas teorías lo atan a una finalidad."},
+    {"s": "Orden jurídico y público", "t": "Dato", "q": "¿Con qué identifican el orden público Mourlon y Vareilles-Sommières?", "a": "Mourlon: con la intuición del intérprete. Vareilles-Sommières: con la voluntad del legislador.", "why": "Estas teorías lo atan a una persona."},
+
+    {"s": "Fuentes", "t": "Lista", "q": "¿Cuáles son las 6 fuentes del derecho que menciona el apunte?", "a": "Normas jurídicas, doctrina, usos y costumbres, jurisprudencia, equidad y principios generales del derecho."},
+    {"s": "Fuentes", "t": "Diferencia", "q": "Doctrina vs. jurisprudencia", "a": "Doctrina: lo que escriben los juristas. Jurisprudencia: lo que resuelven los tribunales en sus fallos.", "why": "Complemento: el apunte las enumera sin definirlas."},
+    {"s": "Fuentes", "t": "Diferencia", "q": "Fuente formal vs. fuente material", "a": "Formal: la manera en que se exterioriza un precepto obligatorio (ej.: la ley). Material: la idea, causa u origen de la fuente formal.", "why": "Formal = cómo se manifiesta. Material = por qué existe."},
+    {"s": "Fuentes", "t": "Caso", "q": "Los vecinos reclaman por ruidos de obra de madrugada y el municipio dicta una ordenanza de horarios. ¿Cuál es la fuente formal y cuál la material?", "a": "Formal: la ordenanza. Material: los reclamos y la necesidad de proteger el descanso."},
+    {"s": "Fuentes", "t": "Dato", "q": "Según la opinión «casi unánime» que cita el apunte, ¿cuáles son las fuentes formales del derecho?", "a": "Dos: la ley y los contratos.", "why": "Jurisprudencia, equidad, usos y costumbres, principios generales y doctrina funcionan como instrumentos interpretativos."},
+    {"s": "Fuentes", "t": "Diferencia", "q": "Fuentes directas vs. indirectas", "a": "Directa: la ley, voluntad colectiva en una norma que impone un obrar. Indirectas: la razón, causa u origen de las directas.", "why": "En el apunte, directa ≈ formal e indirecta ≈ material."},
+    {"s": "Fuentes", "t": "Lista", "q": "¿Cuáles son las fuentes primigenias? ¿Y cuáles las «otras fuentes»?", "a": "Primigenias: costumbres y conductas; principios y virtudes. Otras: normas jurídicas, jurisprudencia y doctrina."},
+    {"s": "Fuentes", "t": "Dato", "q": "¿Qué significa que la norma «vuelve sobre la realidad»?", "a": "Que, una vez creada, condiciona la realidad que le dio origen.", "why": "Accidentes con monopatines → casco obligatorio → la gente empieza a usar casco."},
+
+    {"s": "Ramas", "t": "Lista", "q": "¿Cuáles son las 6 ramas del derecho público?", "a": "Constitucional, administrativo, penal, procesal, financiero y tributario, e internacional público."},
+    {"s": "Ramas", "t": "Lista", "q": "¿Cuáles son las 4 ramas del derecho privado?", "a": "Civil, comercial, laboral o social, e internacional privado."},
+    {"s": "Ramas", "t": "Diferencia", "q": "Derecho internacional público vs. privado", "a": "Público: relaciones entre Estados. Privado: relaciones entre personas físicas o jurídicas de distinta nacionalidad.", "why": "Mirá quiénes son las partes. Tratado de límites → público. Empresa argentina que compra a un alemán → privado."},
+    {"s": "Ramas", "t": "Caso", "q": "Una constructora gana una licitación del Estado para hacer una ruta. ¿Qué rama regula la relación?", "a": "El derecho administrativo.", "why": "Regula las relaciones del Estado con los particulares. No es civil: una parte es el Estado actuando como tal."},
+    {"s": "Ramas", "t": "Dato", "q": "¿En qué rama ubica el apunte al derecho laboral y cuál es la excepción?", "a": "En el derecho privado. Excepción: la parte que regula los reclamos de seguridad social forma parte del derecho público."},
+
+    {"s": "Sanción de las leyes", "t": "Lista", "q": "¿Cuáles son las 3 etapas de creación de una ley?", "a": "Iniciativa, constitutiva y de eficacia."},
+    {"s": "Sanción de las leyes", "t": "Dato", "q": "¿Quiénes pueden presentar un proyecto de ley?", "a": "Los legisladores, el Poder Ejecutivo o los ciudadanos. Se presenta en el Congreso."},
+    {"s": "Sanción de las leyes", "t": "Diferencia", "q": "Sanción vs. promulgación vs. publicación", "a": "Sanción: el Congreso aprueba en ambas Cámaras. Promulgación: el Poder Ejecutivo aprueba la ley sancionada. Publicación: en el Boletín Oficial, y desde ahí obliga."},
+    {"s": "Sanción de las leyes", "t": "Caso", "q": "Una ley fue sancionada y promulgada, pero todavía no salió en el Boletín Oficial. ¿Es obligatoria?", "a": "No.", "why": "La obligatoriedad llega con la publicación. Sanción y promulgación son necesarias, pero no alcanzan."},
+    {"s": "Sanción de las leyes", "t": "Diferencia", "q": "Promulgación tácita vs. veto", "a": "Tácita: el Ejecutivo no devuelve el proyecto en 10 días hábiles y queda aprobado. Veto: el Ejecutivo rechaza, total o parcialmente, lo sancionado.", "why": "El plazo es un complemento: sale del artículo 80 de la Constitución Nacional, no del apunte."},
+    {"s": "Sanción de las leyes", "t": "Lista", "q": "¿Qué clases de leyes dicta el Congreso?", "a": "Normas de derecho común, normas federales y normas locales."}
+  ]
+}
+</script>
+
+<div class="app">
+  <div class="topline"><span id="crumb"></span><span>Flashcards</span></div>
+  <h1 id="title"></h1>
+  <div class="stats" aria-live="polite">
+    <span class="stat new">Nuevas <b id="n-new">0</b></span>
+    <span class="stat learn">Repasar <b id="n-learn">0</b></span>
+    <span class="stat done">Dominadas <b id="n-done">0</b></span>
+  </div>
+  <div class="chips" id="chips" role="group" aria-label="Filtrar por tema"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <main class="card" id="card" aria-live="polite"></main>
+  <div class="actions" id="actions"></div>
+  <div class="keys"><kbd>Espacio</kbd> mostrar · <kbd>1</kbd> no la sabía · <kbd>2</kbd> la sabía</div>
+  <button class="reset" id="reset" type="button">Borrar mi progreso</button>
+</div>
+
+<script>
+(() => {
+  const deck = JSON.parse(document.getElementById("deck").textContent);
+  const cards = deck.cards.map((c, i) => ({ ...c, id: i }));
+  const KEY = "flashcards:" + deck.id;
+  const MASTERED = 3; // boxes: none = new, 1-2 = repasar, 3 = dominada
+
+  let boxes = {};
+  try { boxes = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch { boxes = {}; }
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(boxes)); } catch {} };
+
+  const sections = [...new Set(cards.map((c) => c.s))];
+  let filter = null;
+  let queue = [], pos = 0, shown = false, results = [];
+
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  $("crumb").innerHTML = "";
+  $("crumb").append(el("b", null, deck.unidad), " · " + deck.materia);
+  $("title").textContent = deck.titulo;
+  document.title = "Flashcards " + deck.unidad;
+
+  const shuffle = (xs) => { for (let i = xs.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [xs[i], xs[j]] = [xs[j], xs[i]]; } return xs; };
+  const pool = () => cards.filter((c) => !filter || c.s === filter);
+  // Weakest first: cards you failed, then new, then learning, then mastered.
+  const rank = (c) => (boxes[c.id] === undefined ? 1 : boxes[c.id] === 0 ? 0 : boxes[c.id] >= MASTERED ? 3 : 2);
+  const start = (list) => {
+    queue = shuffle([...list]).sort((a, b) => rank(a) - rank(b));
+    pos = 0; shown = false; results = [];
+    render();
+  };
+
+  const stats = () => {
+    const p = pool();
+    $("n-new").textContent = p.filter((c) => boxes[c.id] === undefined).length;
+    $("n-learn").textContent = p.filter((c) => boxes[c.id] !== undefined && boxes[c.id] < MASTERED).length;
+    $("n-done").textContent = p.filter((c) => boxes[c.id] >= MASTERED).length;
+  };
+
+  const chips = () => {
+    const box = $("chips");
+    box.replaceChildren();
+    [null, ...sections].forEach((s) => {
+      const b = el("button", "chip", s ?? "Todas");
+      b.type = "button";
+      b.setAttribute("aria-pressed", String(filter === s));
+      b.onclick = () => { filter = s; chips(); start(pool()); };
+      box.append(b);
+    });
+  };
+
+  const progress = () => {
+    const bar = $("progress");
+    bar.replaceChildren(...queue.map((_, i) => el("span", i < results.length ? (results[i] ? "ok" : "no") : i === pos ? "now" : "")));
+  };
+
+  const answer = (knew) => {
+    const c = queue[pos];
+    boxes[c.id] = knew ? Math.min(MASTERED, (boxes[c.id] ?? 0) + 1) : 0;
+    save();
+    results.push(knew);
+    pos++; shown = false;
+    render();
+  };
+
+  const render = () => {
+    stats(); progress();
+    const card = $("card"), actions = $("actions");
+    card.replaceChildren(); actions.replaceChildren();
+    card.classList.remove("end");
+
+    if (pos >= queue.length) {
+      const ok = results.filter(Boolean).length;
+      card.classList.add("end");
+      card.append(el("div", "type", "Ronda terminada"), el("div", "big", ok + " / " + queue.length), el("p", null, ok === queue.length ? "Las sabías todas." : "Repasá las que fallaste mientras están frescas."));
+      const row = el("div", "row");
+      const failed = queue.filter((_, i) => !results[i]);
+      if (failed.length) { const b = el("button", "primary", "Repasar las " + failed.length + " que fallé"); b.onclick = () => start(failed); row.append(b); }
+      const again = el("button", failed.length ? "" : "primary", "Nueva ronda"); again.onclick = () => start(pool()); row.append(again);
+      card.append(row);
+      return;
+    }
+
+    const c = queue[pos];
+    const meta = el("div", "meta");
+    meta.append(el("span", "type", c.t), el("span", "section", c.s + " · " + (pos + 1) + " de " + queue.length));
+    card.append(meta, el("div", "q", c.q));
+    if (shown) {
+      const a = el("div", "answer");
+      a.append(el("div", "label", "Respuesta"), el("div", "a", c.a));
+      if (c.why) { const w = el("div", "why"); w.append(el("b", null, "Por qué: "), c.why); a.append(w); }
+      card.append(a);
+      const no = el("button", "no", "No la sabía"); no.type = "button"; no.onclick = () => answer(false);
+      const yes = el("button", "yes", "La sabía"); yes.type = "button"; yes.onclick = () => answer(true);
+      actions.append(no, yes);
+    } else {
+      card.append(el("div", "think", "Respondé en voz alta antes de mirar."));
+      const r = el("button", "reveal", "Mostrar respuesta"); r.type = "button"; r.onclick = () => { shown = true; render(); };
+      actions.append(r);
+    }
+  };
+
+  document.addEventListener("keydown", (e) => {
+    if (e.target.closest && e.target.closest(".chips")) return;
+    if (pos >= queue.length) return;
+    if (!shown && (e.key === " " || e.key === "Enter")) { e.preventDefault(); shown = true; render(); }
+    else if (shown && e.key === "1") answer(false);
+    else if (shown && e.key === "2") answer(true);
+  });
+  $("reset").onclick = () => { boxes = {}; save(); start(pool()); };
+
+  chips();
+  start(pool());
+})();
+</script>

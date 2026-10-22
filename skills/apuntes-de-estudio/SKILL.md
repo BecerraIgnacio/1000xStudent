@@ -29,6 +29,7 @@ Si el pedido no lo dice, entregá por unidad: **video + cuestionario + notas sob
 
 - Video (Remotion + ElevenLabs): skill `video-de-estudio`
 - Machete HTML de repaso: skill `machete`
+- Flashcards para practicar: skill `to-flashcards`
 
 El cuestionario y las notas se definen abajo.
 
