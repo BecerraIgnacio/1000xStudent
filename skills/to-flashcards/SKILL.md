@@ -9,6 +9,14 @@ Genera un mazo de flashcards y lo entrega como una web lista para practicar en e
 
 La app muestra la pregunta, el estudiante responde en voz alta y después la da vuelta. Con "No la sabía" la tarjeta vuelve al principio de la fila; con "La sabía" sube de nivel. Cada ronda empieza por las más débiles. El progreso se guarda en el navegador.
 
+Si una tarjeta está mal, el estudiante la elimina desde la propia tarjeta. Puede deshacer o restaurarla desde "Tarjetas eliminadas". La eliminación solo oculta la tarjeta en ese navegador; "Copiar lista" arma un texto con las tarjetas eliminadas para pasárselo a Claude.
+
+## Corregir un mazo publicado
+
+Cuando el usuario pega esa lista ("tarjetas a corregir"), verificá cada tarjeta contra el material. Después corregila o borrala del bloque `deck` y volvé a publicar con el mismo `file_path`, para conservar el link.
+
+El progreso se guarda por texto de la pregunta: las tarjetas que no tocaste conservan el suyo y una tarjeta con la pregunta reescrita empieza como nueva.
+
 ## Pasos
 
 ### 1. Mapear
