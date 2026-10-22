@@ -4,47 +4,43 @@ Duración objetivo: 5 min · 150 palabras por minuto · ~750 palabras
 
 ## Apertura
 
-El derecho no se puede definir desde un solo ángulo, y por eso la definición que adopta la materia es causal: el derecho es un **fenómeno complejo** con cuatro causas. Su **causa material** es la conducta humana en **interferencia intersubjetiva**; su **causa formal**, la **justicia**; su **causa eficiente**, la **ley**; y su **causa final**, el **bien común**. A partir de esa definición se ordena toda la unidad: dónde rige el derecho, qué límites tiene, de dónde surge y cómo se crea una ley.
+Los fundamentos del derecho pueden ordenarse en torno a una pregunta: qué es el derecho y bajo qué condiciones una norma llega a ser obligatoria. La materia adopta una definición causal, según la cual el derecho es un **fenómeno complejo** que reconoce cuatro causas: la **conducta humana en interferencia intersubjetiva** como causa material, la **justicia** como causa formal, la **ley** como causa eficiente y el **bien común** como causa final. A partir de esa definición, la exposición se organiza en cuatro ejes: el concepto de derecho, el Estado de derecho, la distinción entre orden jurídico y orden público, y las fuentes junto con la formación de la ley.
 
-## 1. Las cuatro causas
+## 1. El concepto de derecho
 
-Interferencia intersubjetiva significa que mi conducta afecta a otro. Una persona sola en una isla no genera nada que regular; apenas aparece un segundo sujeto, hay un **acto humano justiciable**, una conducta que puede ser juzgada. La justicia es la causa formal porque le da al derecho su forma: el material la llama la virtud de las virtudes. El bien común, como causa final, se apoya en la **sindéresis**: el bien ha de hacerse y el mal ha de evitarse. Y la causa eficiente es la ley, pero en **sentido amplio**: toda norma jurídica, incluidos decretos y resoluciones. En **sentido estricto**, ley es solo la que sanciona el Congreso y promulga el Poder Ejecutivo. Lo que las separa es quién dicta la norma y por qué procedimiento.
+La definición causal tiene la virtud de integrar las perspectivas desde las que se ha pensado el derecho: como conducta, en la línea de **Cossio**; como sanción; como expresión de voluntades; como proyecto de orden y como manifestación de poder. La causa material delimita el objeto: solo es jurídica la conducta que interfiere con la de otro, es decir, el **acto humano justiciable**. La causa formal, la justicia, aparece como virtud de las virtudes, y la causa final se apoya en el principio de **sindéresis**. En cuanto a la causa eficiente, corresponde precisar que la ley se toma en **sentido amplio**, como toda norma jurídica, a diferencia del **sentido estricto**, que comprende solo la norma sancionada por el Congreso y promulgada por el Poder Ejecutivo. El criterio de distinción es, por lo tanto, orgánico y procedimental.
 
 ## 2. Estado y Estado de derecho
 
-Ese derecho rige dentro de un **Estado**: un grupo de individuos establecidos sobre un territorio determinado y sujetos a la autoridad de un mismo gobierno. De ahí salen sus cuatro elementos: **población**, que incluye a los extranjeros; **territorio**, con suelo, subsuelo, espacio marítimo y aéreo; **poder**, que es la capacidad para lograr su fin; y **gobierno**, que son los órganos que ejercen ese poder. Poder y gobierno no son lo mismo: uno es la capacidad y el otro, quien la ejerce. Ahora bien, no todo Estado es un **Estado de derecho**. Para serlo necesita cuatro requisitos acumulativos: un ordenamiento jurídico, que ese ordenamiento sea **justo**, que tenga **vigencia** y que se **sancione** a quien lo transgrede. Un país con leyes impecables donde nadie es juzgado es un Estado, pero no un Estado de derecho.
+El derecho positivo se inscribe en un Estado, entendido como un grupo de individuos establecidos sobre un territorio determinado y sujetos a la autoridad de un mismo gobierno. Sus elementos son la **población**, el **territorio**, el **poder** y el **gobierno**. Conviene no confundir los dos últimos: el poder es la capacidad de la que el Estado dispone para alcanzar su fin; el gobierno, el conjunto de órganos a través de los cuales esa capacidad se ejerce. Ahora bien, la existencia del Estado no basta para hablar de **Estado de derecho**. Este exige cuatro requisitos acumulativos: un ordenamiento jurídico, que ese ordenamiento sea **justo**, que tenga **vigencia** y que sus transgresiones sean **sancionadas**. La exigencia de justicia muestra que el concepto no es puramente formal: abre la distinción entre **legalidad** y **legitimidad**, que el propio material deja planteada.
 
 ## 3. Orden jurídico y orden público
 
-Dentro del Estado hay dos órdenes que suelen confundirse. El **orden jurídico** es el conjunto de normas vigentes en un lugar y tiempo determinados: el **derecho positivo**, dotado de imperium. El **orden público** es más estrecho: es el núcleo de condiciones fundamentales de la vida social que **no puede alterarse por la voluntad de los particulares ni por normas extranjeras**. Por eso, si dos empresas pactan que un edificio no cumpla las normas de seguridad estructural, esa cláusula no vale, aunque ambas estén de acuerdo. Sobre su fundamento hay varias teorías: Borda lo identifica con las **leyes imperativas**, Demolombe con el derecho público y Planiol con las normas que preservan el **interés general**.
+Una segunda distinción relevante separa el orden jurídico del orden público. El **orden jurídico** es el conjunto de normas vigentes en un lugar y tiempo determinados, es decir, el **derecho positivo**, dotado de imperium. El **orden público**, en cambio, designa un núcleo más restringido: las condiciones fundamentales de la vida social que **no pueden ser alteradas por la voluntad de los particulares ni por la aplicación de normas extranjeras**. Su función es, en consecuencia, operar como límite de la autonomía privada; por ejemplo, invalida la cláusula contractual que pretende excluir las normas de seguridad estructural. En cuanto a su fundamento, la doctrina no es uniforme. Algunos autores lo vinculan con un tipo de norma, como **Borda**, que lo identifica con las **leyes imperativas**, o Demolombe, con el derecho público; otros, con una finalidad, como **Planiol**, que lo asocia al **interés general**; y otros, con la intuición del intérprete o la voluntad del legislador.
 
-## 4. Fuentes del derecho
+## 4. Fuentes y formación de la ley
 
-La pregunta siguiente es de dónde surge el derecho. Fuente significa principio u origen, y el material enumera seis: normas jurídicas, doctrina, usos y costumbres, jurisprudencia, equidad y principios generales. La distinción central es entre **fuente formal**, la manera en que se exterioriza un precepto obligatorio, como la ley, y **fuente material**, la idea o causa que le da origen. Una ola de accidentes con monopatines es fuente material; la norma que obliga a usar casco es fuente formal. Y la relación es circular, porque la norma **vuelve sobre la realidad** y la modifica. Un matiz importante: según la opinión casi unánime que recoge el material, las fuentes formales son solo dos, **la ley y los contratos**; jurisprudencia, doctrina y equidad operan como **instrumentos interpretativos**.
-
-## 5. Ramas y sanción de las leyes
-
-El derecho se divide en **público**, donde el Estado actúa con su autoridad, como el constitucional, el administrativo o el penal, y **privado**, que regula relaciones entre particulares, como el civil o el comercial. La ley en sentido estricto nace en tres etapas: **iniciativa**, **constitutiva** y **de eficacia**. El Congreso la **sanciona** con la aprobación de ambas Cámaras; el Poder Ejecutivo la **promulga**, en forma expresa o tácita, o la **veta**; y recién con la **publicación en el Boletín Oficial** adquiere obligatoriedad. Además, el Congreso dicta tres clases de leyes: de **derecho común**, **federales** y **locales**.
+Respecto de las fuentes, el material enumera las normas jurídicas, la doctrina, los usos y costumbres, la jurisprudencia, la equidad y los principios generales del derecho. La clasificación de mayor relevancia distingue la **fuente formal**, como modo de exteriorización de un precepto obligatorio, de la **fuente material**, como idea, causa u origen de aquella. La relación entre ambas no es lineal, ya que la norma, una vez creada, **vuelve sobre la realidad** y la condiciona. Cabe señalar, además, que según la opinión casi unánime que recoge el material, las fuentes formales se reducen a **la ley y los contratos**, mientras que las restantes funcionan como **instrumentos interpretativos**. Por último, la ley en sentido estricto se forma en tres etapas: **iniciativa**, **constitutiva** y **de eficacia**. La **sanción** corresponde al Congreso; la **promulgación**, expresa o tácita, al Poder Ejecutivo; y la obligatoriedad se adquiere recién con la **publicación en el Boletín Oficial**.
 
 ## Cierre
 
-En síntesis: las **cuatro causas** explican qué es el derecho; el **Estado de derecho** exige que ese derecho sea justo, vigente y efectivo; el **orden público** marca el límite que nadie puede negociar; y las **fuentes** y el proceso de **sanción** explican cómo una necesidad social se convierte en una norma obligatoria. Esa es la base sobre la que se apoya el resto de la materia.
+En síntesis, los fundamentos del derecho articulan tres planos. Un **plano conceptual**, que define el derecho por sus causas. Un **plano institucional**, que exige un Estado cuyo ordenamiento sea justo, vigente y efectivo, y que reserva al orden público un núcleo indisponible. Y un **plano genético**, que explica cómo una necesidad social se convierte, a través de las fuentes y del proceso de sanción, en una norma obligatoria.
 
 ---
 
 ## Preguntas que te pueden hacer
 
 **¿Por qué la causa eficiente es la ley y no la justicia?**
-Porque eficiente es lo que produce algo, y lo que produce derecho es la ley en sentido amplio. La justicia es la causa formal: le da la forma, no lo produce.
+Porque la causa eficiente es la que produce el derecho, y esa función la cumple la ley en sentido amplio. La justicia es la causa formal: le da su forma, no lo produce.
 
-**¿Una resolución de un ministerio es ley?**
-En sentido amplio sí, porque es una norma jurídica. En sentido estricto no, porque no la sancionó el Congreso ni la promulgó el Ejecutivo.
+**¿Una resolución ministerial es ley?**
+En sentido amplio sí, porque es una norma jurídica. En sentido estricto no, porque no fue sancionada por el Congreso ni promulgada por el Poder Ejecutivo.
 
-**¿Un extranjero integra la población del Estado?**
-Sí. La población son los habitantes, argentinos o extranjeros; no es lo mismo que ciudadanía.
+**¿Cuál es el criterio para distinguir orden jurídico de orden público?**
+La extensión y la disponibilidad. El orden jurídico comprende todas las normas vigentes; el orden público, solo el núcleo que no puede alterarse ni por la voluntad de los particulares ni por normas extranjeras.
 
 **¿Cuándo es obligatoria una ley?**
-Con su publicación en el Boletín Oficial. Sanción y promulgación son necesarias, pero no alcanzan.
+Con su publicación en el Boletín Oficial. La sanción y la promulgación son condiciones necesarias, pero no suficientes.
 
 **¿El derecho laboral es público o privado?**
-Privado, porque regula la relación entre trabajador y empleador. La excepción son los reclamos de seguridad social, que forman parte del derecho público.
+El material lo ubica en el derecho privado, porque regula la relación entre trabajador y empleador. La excepción es la parte relativa a los reclamos de seguridad social, que integra el derecho público.

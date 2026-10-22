@@ -1,6 +1,6 @@
 ---
 name: script-oral
-description: Escribe el guion de un examen oral o una exposición ajustado a la duración pedida (150 palabras por minuto), sin saludo, para que quien escucha concluya que el expositor domina el tema, y arma un mapa mental con cronómetro para practicarlo. Usar cuando piden un script, guion o texto para un oral, una exposición o una presentación hablada de N minutos.
+description: Escribe el guion de un examen oral o una exposición universitaria ajustado a la duración pedida (150 palabras por minuto), en registro académico y sin saludo, para que quien escucha concluya que el expositor domina el tema, y arma un mapa mental con cronómetro para practicarlo. Usar cuando piden un script, guion o texto para un oral, una exposición o una presentación hablada de N minutos.
 ---
 
 # Script oral
@@ -23,15 +23,15 @@ Elegí 3 a 5 bloques que cubran lo que un evaluador espera escuchar del tema, en
 
 | Parte | Peso | Qué hace |
 |---|---|---|
-| Apertura | ~10 % | La tesis o definición central en la primera oración, y el recorrido en una frase |
-| Bloques | ~80 % | Uno por eje, con peso proporcional a su importancia |
-| Cierre | ~8 % | La síntesis que conecta los bloques |
+| Apertura | ~10 % | Problema, definición o tesis, y anuncio de los ejes |
+| Ejes | ~80 % | Uno por bloque, con peso proporcional a su importancia |
+| Cierre | ~8 % | Conclusión que integra los ejes |
 
 Listo cuando: cada bloque tiene título, eje y cantidad de palabras, y la suma da el presupuesto.
 
 ### 3. Escribir el script
 
-Seguí las reglas de "Cómo suena alguien que sabe" y el formato de archivo (los dos, abajo). [ejemplo-script.md](ejemplo-script.md) es un script terminado de 5 minutos: copiá su forma.
+Seguí las reglas de "Registro: exposición universitaria" y el formato de archivo (los dos, abajo). [ejemplo-script.md](ejemplo-script.md) es un script terminado de 5 minutos: copiá su forma.
 
 Listo cuando: cada bloque cumple las reglas y cada término que hay que decir sí o sí está en **negrita**.
 
@@ -53,17 +53,34 @@ Guardá el script y el mapa juntos y publicá el mapa como Artifact, siguiendo l
 
 Listo cuando: el script quedó verificado contra el material y el link del mapa abre.
 
-## Cómo suena alguien que sabe
+## Registro: exposición universitaria
 
-- **Primera oración = la tesis.** La definición o la idea central del tema, con sus términos técnicos. La segunda oración anticipa el recorrido.
-- **Vocabulario técnico con traducción inmediata.** Usá el término exacto y explicalo en la misma oración. Eso muestra dominio y claridad a la vez.
-- **Cada bloque avanza en el mismo orden:** afirmación → por qué funciona así → un ejemplo concreto → la distinción con el concepto vecino.
-- **Los bloques se enlazan por lógica.** "Ese derecho rige dentro de un Estado…" conecta el bloque anterior con el que sigue. Evitá anunciar ("ahora voy a hablar de").
-- **Una o dos referencias por bloque.** Autores, artículos o normas del material, en el momento en que sostienen algo. Si cargás más, suena a lista.
-- **Un matiz de profundidad.** Por lo menos una vez, mostrá algo que solo ve quien estudió en serio: una excepción, una discusión doctrinaria, un error común o un límite del concepto.
-- **El cierre sintetiza.** Una o dos oraciones que conectan los bloques entre sí. Termina en contenido, sin "muchas gracias" ni "eso es todo".
-- **Se escribe para decir.** Oraciones de hasta unas 20 palabras, una idea por oración y registro formal y natural. El texto va en primera persona o impersonal, sin dirigirse al evaluador con voseo ni tuteo. Escribí números y siglas como se pronuncian.
-- **Fidelidad.** Todo lo afirmado sale del material. Lo desactualizado se dice "según el material".
+Quien escucha ya conoce el tema. No evalúa si el expositor sabe explicarlo a un principiante, sino su **precisión**, su capacidad de **articular** conceptos y su **criterio**. El script es una exposición académica, no una clase narrada.
+
+| Clase narrada (evitar) | Exposición universitaria |
+|---|---|
+| "Interferencia intersubjetiva significa que mi conducta afecta a otro. Una persona sola en una isla…" | "La causa material delimita el objeto: solo es jurídica la conducta que interfiere con la de otro." |
+| "Pensalo como un puente: el acero, el diseño…" | "El criterio de distinción es orgánico y procedimental." |
+| "Una ola de accidentes con monopatines es fuente material…" | "La relación no es lineal: la norma, una vez creada, vuelve sobre la realidad y la condiciona." |
+
+### Reglas
+
+- **Apertura académica.** La primera oración plantea el problema o la pregunta que organiza el tema. La segunda da la definición o la tesis con su formulación técnica. La tercera anuncia los ejes ("La exposición se organiza en cuatro ejes: …"). No hay saludo ni presentación personal.
+- **Definir y caracterizar, no traducir.** Usá la formulación técnica del material y avanzá a los caracteres, los elementos y el alcance. Agregá una aclaración solo cuando el término es ambiguo, nunca para bajarlo a lenguaje coloquial.
+- **Cada eje sigue este orden:**
+  1. concepto;
+  2. elementos o caracteres;
+  3. **criterio de distinción** con el concepto vecino;
+  4. fundamento (autor, norma, doctrina);
+  5. consecuencia o alcance.
+- **Ejemplos técnicos y escasos.** A lo sumo uno por eje, breve y tomado del propio campo (una cláusula, una norma, un caso típico de la materia). Nada de analogías de la vida cotidiana.
+- **Posiciones y debates.** Cuando la doctrina no es uniforme, decilo y atribuí cada posición a su autor. Es la señal más fuerte de dominio.
+- **Articulación lógica.** Usá conectores que expresen la relación: "ahora bien", "en cambio", "en consecuencia", "por lo tanto", "cabe distinguir". Elegí uno por transición, con la relación que corresponde, sin convertirlos en muletilla.
+- **Registro impersonal o en tercera persona.** Fórmulas como "se entiende por", "corresponde precisar", "la doctrina sostiene". Sin voseo, sin tuteo y sin dirigirse al oyente.
+- **Un matiz de profundidad** por lo menos: una excepción, una discusión, un límite del concepto o una tensión entre fuentes.
+- **Cierre como conclusión.** Integrá los ejes en un esquema (niveles, planos, una relación entre ellos) o en una valoración. Que no sea una lista de repaso; termina en contenido, sin "muchas gracias".
+- **Se escribe para decir.** Oraciones que se puedan decir de un aliento (hasta unas 25 palabras), con números y siglas escritos como se pronuncian.
+- **Fidelidad.** Todo lo afirmado sale del material. Lo que no está en el material se omite, o se atribuye a su fuente. Lo desactualizado se dice "según el material".
 
 ## Formato del archivo
 
